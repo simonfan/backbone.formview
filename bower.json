@@ -1,14 +1,12 @@
 {
-	"name": "Boilerplate Component",
-	"version": "0.0.1",
-	"dependencies": {
-		"jquery": "lastest",
-		"underscore": "latest",
-		"backbone": "latest",
-		"requirejs": "latest",
-
-	    "qunit": "latest"
-	},
-
-	"main": "component.js"
+  "name": "backbone.formview",
+  "version": "0.0.1",
+  "dependencies": {
+    "backbone.modelview": "simonfan/backbone.modelview",
+    "backbone": "~1.0.0",
+    "jquery": "~2.0.3",
+    "underscore": "~1.5.1",
+    "requirejs": "~2.1.8"
+  },
+  "main": "backbone.formview.js"
 }
