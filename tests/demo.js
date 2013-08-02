@@ -21,13 +21,6 @@ define(['../backbone.formview','backbone'], function(FormView, Backbone) {
 		data: function(model) {
 			return model.attributes;
 		},
-
-		/**
-		 * method called before the data is set.
-		 */
-		update: function(name, data) {
-			
-		}
 	});
 
 
