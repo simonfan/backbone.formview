@@ -20,7 +20,11 @@ define(['backbone.modelview','underscore'], function(ModelView, undef) {
 		/**
 		 * Associates the form element with the model attribute.
 		 */
-		mapFormElement: function(attrName, selector) {
+		mapFormElement: function(selector, attrName) {
+
+		//	console.log('selector: ' + selector);
+		//	console.log('attrName: ' + attrName);
+
 			// set on map object
 			this.map[ attrName ] = selector;
 
