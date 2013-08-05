@@ -5,12 +5,7 @@ define(['backbone.modelview','underscore'], function(ModelView, undef) {
 			// call the ModelView initialize
 			ModelView.prototype.initialize.call(this, options);
 
-			/**
-			 * options.update intercepts the value setting on the model.
-			 */
-			this.update = options.update;
-
-			_.bindAll(this,'_update');
+			_.bindAll(this,'_update','mapFormElement');
 
 			var _this = this;
 
@@ -18,16 +13,24 @@ define(['backbone.modelview','underscore'], function(ModelView, undef) {
 			 * Save the 'map name' on the jquery DOM element.
 			 * so that we can retrieve it later when updating the model (through this._update)
 			 */
-			_.each(this.map, function(selector, name) {
-				// save the name parameter on the dom element.
-				_this.$el.find(selector).data('Backbone.FormView-name', name);	
-			})
+			_.each(this.map, this.mapFormElement);
 		},
 
-		events: {
-			'change input': '_update',
-			'change select': '_update',
-			'change textarea': '_update',
+
+		/**
+		 * Associates the form element with the model attribute.
+		 */
+		mapFormElement: function(attrName, selector) {
+			// set on map object
+			this.map[ attrName ] = selector;
+
+			this.$el
+				.find(selector)
+				// get only form fields
+				.filter('input,select,textarea')
+				// save the name parameter on the dom element.
+				.data('Backbone.FormView-name', attrName)
+				.change(this._update);
 		},
 
 		/**
@@ -50,7 +53,6 @@ define(['backbone.modelview','underscore'], function(ModelView, undef) {
 					return $(check).val();
 				});
 			}
-
 
 			return this.model.set(name, value);
 		},

@@ -34,7 +34,24 @@ define(['../backbone.formview','backbone'], function(FormView, Backbone) {
 		check: ['first','third','sixth']
 	});
 
+
+
+
 	model.on('change', function(model) {
 		console.log(model.attributes);
-	})
+	});
+
+
+
+	// build an element on the fly
+/*	form.build({
+		parent: '',
+		html: '<select name="on-the-fly"><option>Fly</option><option>Walk</option></select>',
+		map: { 'select[name="on-the-fly"]': "on-the-fly" },
+	});
+
+
+	model.set('on-the-fly', 'Walk');
+
+	*/
 });
